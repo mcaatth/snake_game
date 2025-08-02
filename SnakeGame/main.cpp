@@ -44,6 +44,7 @@ int main(int argc, char ** argv) {
 	sf::Clock clock; //We need a clock to move snake every given period of time. Clock starts counting when created.
 	srand(static_cast<unsigned int>(time(nullptr))); //srand() function sets the starting point for producing a series of pseudo-random integers
 	//I moved TIME_BETWEEN_SNAKE_MOVEMENTS to constants.h
+	bool gameover = false;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -61,7 +62,7 @@ int main(int argc, char ** argv) {
 			}
 		}
 
-		if (clock.getElapsedTime().asSeconds() > TIME_BETWEEN_SNAKE_MOVEMENTS) {
+		if (clock.getElapsedTime().asSeconds() > TIME_BETWEEN_SNAKE_MOVEMENTS && !gameover) {
 			// We update the snake according to the food met and draw snake again in the bottom below
 			snake.move();
 			// Additional part (more than only move()) for the case when eating food:
@@ -72,7 +73,7 @@ int main(int argc, char ** argv) {
 			}
 			// Additional part (more than only move()) for the case when snake collides:
 			if (doesCollide(snake) == true) {
-				break; //TODO: window closes here, fix it, system("PAUSE") doesn't work correctly
+				gameover = true;
 			}
 			clock.restart();
 		}

@@ -18,7 +18,7 @@ void Food::draw(sf::RenderWindow& window) {
 	//The position of sf::RectangleShape is set later with function setPosition() from the class sf::RectangleShape
 	sf::RectangleShape rect(sf::Vector2f(SIZE_OF_SNAKE_AND_FOOD_SEGMENT - 2, SIZE_OF_SNAKE_AND_FOOD_SEGMENT - 2)); // minus 2 so that we see nice separate segments
 	rect.setFillColor(FOOD_COLOR);
-	rect.setPosition(foodElement.x * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1, foodElement.y * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1); // cause we substracted 2 above
+	rect.setPosition(static_cast<float>(foodElement.x) * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1, static_cast<float>(foodElement.y) * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1); // cause we substracted 2 above
 	window.draw(rect);
 }
 

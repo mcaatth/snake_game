@@ -17,7 +17,7 @@ void Snake::draw(sf::RenderWindow& window) {
 	sf::RectangleShape rect(sf::Vector2f(SIZE_OF_SNAKE_AND_FOOD_SEGMENT - 2, SIZE_OF_SNAKE_AND_FOOD_SEGMENT - 2)); // minus 2 so that we see nice separate segments of snake
 	rect.setFillColor(SNAKE_COLOR);
 	for (auto& segment : body) {
-		rect.setPosition(segment.x * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1, segment.y * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1); // cause we substracted 2 above
+		rect.setPosition(static_cast<float>(segment.x) * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1, static_cast<float>(segment.y) * SIZE_OF_SNAKE_AND_FOOD_SEGMENT + 1); // cause we substracted 2 above
 		window.draw(rect);
 	}
 }
